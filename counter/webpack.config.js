@@ -38,13 +38,14 @@ module.exports = {
       },
     ],
   },
-
-  plugins: [
+  plugins: [ // This is important part
     new ModuleFederationPlugin({
       name: "counter",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: {},
+      exposes: {
+        "./Counter": "./src/components/Counter",
+      },
       shared: {
         ...deps,
         react: {
